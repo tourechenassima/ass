@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Cairo&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Cairo&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   @vite('resources/css/app.css')
 
 </head>
@@ -20,7 +20,6 @@
                
                 
       <a class=" text-red-800 text-center w-1/2 border border-red-400 shadow-red-200 shadow-lg rounded-full  font-bold hover:bg-gradient-to-r from-red-200 md:from-red-500 hover:text-white text-3xl px-3 py-6 " href="#">نصوص قانونية  </a>
-      <a class=" text-red-800 text-center w-1/2 border border-red-400 shadow-red-200 shadow-lg rounded-full  font-bold hover:bg-gradient-to-r from-red-200 md:from-red-500 hover:text-white text-3xl px-3 py-6 " href="#">عن الدائرة </a>
       <a class="  text-red-800 text-center w-1/2 border border-red-400 shadow-red-200 shadow-lg rounded-full  font-bold hover:bg-gradient-to-r from-red-200 md:from-red-500 hover:text-white text-3xl px-3 py-6 " href="{{route('jamayats.index')}}">قائمة الجمعيات</a>
 
                     
