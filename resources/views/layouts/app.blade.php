@@ -10,19 +10,22 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+      
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Ruwudu:wght@500&family=Scheherazade+New:wght@600&display=swap" rel="stylesheet">
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-    <h1 class="rounded-full text-4xl backdrop-blur-3xl bg-green/30 text-green-700  font-bold text-center p-6" >الجمهورية الجزائرية الديمقراطية الشعبية</h1>     
+    <body style="font-family: 'Scheherazade New', serif; ">
+    {{-- <h1 class="rounded-full text-4xl backdrop-blur-3xl bg-green/30 text-green-700  font-bold text-center p-6" >الجمهورية الجزائرية الديمقراطية الشعبية</h1>      --}}
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-slate-600 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -35,4 +38,5 @@
             </main>
         </div>
     </body>
+    
 </html>

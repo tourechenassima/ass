@@ -29,6 +29,7 @@ class Jamayat extends Model
         'phone',
         'baladia',
         'description',
+        'user_id'
          
     ];
     protected $nullable = [
@@ -54,5 +55,8 @@ class Jamayat extends Model
         'description',
          
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
 }

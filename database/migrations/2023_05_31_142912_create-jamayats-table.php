@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
        Schema::create('jamayats', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->string('tasmia');
+            $table->string('slug');
             $table->string('email')->unique();
             $table->string('rakm-itimad');
             $table->date('tarikh-tassiss');

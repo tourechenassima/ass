@@ -30,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('jamayats', JamayatsController::class);
+    Route::get('/nossoss', function () {
+        return view('nossoss');
+    })->name('nossoss');
 });
 
+Route::get('/jamayyats-pdf', [JamayatsController::class, 'jamayyats_pdf'])->name('jamayyats-pdf');
+Route::get('/filtre-apcs', [JamayatsController::class, 'filtreapcs'])->name('filtreapcs');
 require __DIR__.'/auth.php';
