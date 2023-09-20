@@ -37,7 +37,8 @@ class JamayatsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $jamaya = Jamayat::where('id',$id)->first();
+        return view('jamayats.show-jamaya',['jamaya'=>$jamaya]);
     }
 
     /**
