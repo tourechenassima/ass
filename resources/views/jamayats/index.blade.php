@@ -12,20 +12,28 @@
               @method('get') 
             <select  name="apcs" id="apcs" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
-              <option value="" > اختر البلدية</option>
+              {{-- <option value="" > اختر البلدية</option> --}}
               <option value="allapcs" > كل البلديات</option>
-              <option value="chir">شير</option>              
-              <option value="tea">ثنية العابد</option>
-              <option value="ot">وادي الطاقة</option>
+              <option value="شير">شير</option>              
+              <option value="ثنية العابد">ثنية العابد</option>
+              <option value="وادي الطاقة">وادي الطاقة</option>
               
             </select>
             <select  name="tabe3" id="tabe3" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
-              <option value="" > اختر الطابع</option>
+              {{-- <option value="" > اختر الطابع</option> --}}
               <option value="alltabe3" > الكل </option>
-              <option value="thakafi">ثقافي</option>              
-              <option value="tarikhi"> تاريخي</option>
-              <option value="ijtima3i"> إجتماعي</option>
+              <option value="ثقافي">ثقافي</option>              
+              <option value="تاريخي"> تاريخي</option>
+              <option value="إجتماعي"> إجتماعي</option>
+              
+            </select>
+            <select  name="wad3ia" id="wad3ia" class="rounded-lg m-2 " style="direction: rtl" >
+              {{-- onchange = "this.form.submit()" --}}
+              {{-- <option value="" > اختر البلدية</option> --}}
+              <option value="all0and1" > نشطة وغير نشطة </option>
+              <option value="1">نشطة فقط</option>              
+              <option value="0"> غير نشطة فقط</option>
               
             </select>
             <br><br>

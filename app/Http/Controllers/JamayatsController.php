@@ -171,22 +171,22 @@ class JamayatsController extends Controller
      */
     public function filtreapcs(Request $request)
     {
-        if ($request->apcs === "allapcs") {
-            
-            $jamayats = Jamayat::paginate(10);
-        }else{
-            if ($request->apcs === "chir") {
-                $jamayats = Jamayat::where('baladia',"شير")->get();
-            }else{
-                if ($request->apcs === "tea") {
-                    $jamayats = Jamayat::where('baladia',"ثنية العابد")->get();
-                }else{
-                    $jamayats = Jamayat::where('baladia',"وادي الطاقة")->get();
-                }
-            }
-            
+        if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' ) {
+            $jamayats = Jamayat::all();
         }
-        
+
+        if ($request->tabe3 === 'alltabe3' && $request->apcs != 'allapcs' ) {
+            $jamayats = Jamayat::where('baladia',$request->apcs)->get();
+        }
+
+        if ($request->tabe3 != 'alltabe3' && $request->apcs === 'allapcs' ) {
+            $jamayats = Jamayat::where('tabaa',$request->tabe3)->get();
+        }
+
+        if ($request->tabe3 != 'alltabe3' && $request->apcs != 'allapcs' ) {
+            $jamayats = Jamayat::where([['tabaa',$request->tabe3],['baladia',$request->apcs]])->get();
+        }
+    
         return view('jamayats.index ',['jamayats'=>$jamayats]);
     }
 
