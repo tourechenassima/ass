@@ -167,19 +167,37 @@ class JamayatsController extends Controller
     }
 
     /**
-     * فلترة حسب البلدية.
+     * فلترة  .
      */
     public function filtreapcs(Request $request)
     {
-        if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' ) {
+        // if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' ) {
+        //     $jamayats = Jamayat::all();
+        // }
+
+        // if ($request->tabe3 === 'alltabe3' && $request->apcs != 'allapcs' ) {
+        //     $jamayats = Jamayat::where('baladia',$request->apcs)->get();
+        // }
+
+        // if ($request->tabe3 != 'alltabe3' && $request->apcs === 'allapcs' ) {
+        //     $jamayats = Jamayat::where('tabaa',$request->tabe3)->get();
+        // }
+
+        // if ($request->tabe3 != 'alltabe3' && $request->apcs != 'allapcs' ) {
+        //     $jamayats = Jamayat::where([['tabaa',$request->tabe3],['baladia',$request->apcs]])->get();
+        // }
+    
+         return view('jamayats.index ',['jamayats'=>$jamayats]);
+
+         if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' ) {
             $jamayats = Jamayat::all();
         }
 
-        if ($request->tabe3 === 'alltabe3' && $request->apcs != 'allapcs' ) {
+        if ($request->apcs) {
             $jamayats = Jamayat::where('baladia',$request->apcs)->get();
         }
 
-        if ($request->tabe3 != 'alltabe3' && $request->apcs === 'allapcs' ) {
+        if ($request->tabe3) {
             $jamayats = Jamayat::where('tabaa',$request->tabe3)->get();
         }
 
@@ -187,10 +205,7 @@ class JamayatsController extends Controller
             $jamayats = Jamayat::where([['tabaa',$request->tabe3],['baladia',$request->apcs]])->get();
         }
     
-        return view('jamayats.index ',['jamayats'=>$jamayats]);
+    
     }
 
-        
-    
-    
 }

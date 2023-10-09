@@ -18,7 +18,9 @@ use App\Http\Controllers\JamayatsController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
-
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 
 Route::get('/dashboard', function () {
