@@ -1,6 +1,6 @@
 <x-app-layout>
   <div>
-    <h1  class=" text-3xl backdrop-blur-3xl text-gray-700  font-bold text-center p-4 my-10   " >    جمعية جديدة </h1>     
+    <h1  class=" text-3xl backdrop-blur-3xl text-gray-700  font-bold text-center p-4 my-10   " >     جمعية جديدة </h1>     
   </div>
   <div class="container m-auto text-center  pt-15 pb-10 ">
     <form action="{{route('jamayats.store')}}" method="POST" >

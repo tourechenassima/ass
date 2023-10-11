@@ -6,10 +6,10 @@
         </div>
         <div>
 
-
           <form action="{{route('filtreapcs')}}" method="POST" class="flex flex-row justify-between  ">
              {{ csrf_field() }}
               @method('get') 
+              
             <select  name="apcs" id="apcs" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر البلدية</option> --}}
@@ -17,27 +17,30 @@
               <option value="شير">شير</option>              
               <option value="ثنية العابد">ثنية العابد</option>
               <option value="وادي الطاقة">وادي الطاقة</option>
-              
             </select>
+            
             <select  name="tabe3" id="tabe3" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر الطابع</option> --}}
-              <option value="alltabe3" > الكل </option>
-              <option value="ثقافي">ثقافي</option>              
-              <option value="تاريخي"> تاريخي</option>
-              <option value="إجتماعي"> إجتماعي</option>
+              <option value="alltabe3" >  كل الطبوع </option>
+              @foreach ($tabe3s as $tabe3 )
+              <option value={{$tabe3->name}}> {{$tabe3->name}}</option> 
+               
+              @endforeach
+                           
               
             </select>
+            
             <select  name="wad3ia" id="wad3ia" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر البلدية</option> --}}
               <option value="all0and1" > نشطة وغير نشطة </option>
               <option value="1">نشطة فقط</option>              
               <option value="0"> غير نشطة فقط</option>
-              
             </select>
             <br><br>
-             <button class="border border-blue-600 bg-gray-100 rounded-lg m-2 p-2 " type="submit">تخصيص</button> 
+            
+            <button class="border border-blue-600 bg-gray-100 rounded-lg m-2 p-2 " type="submit">تخصيص</button> 
             
           </form>
         </div> 

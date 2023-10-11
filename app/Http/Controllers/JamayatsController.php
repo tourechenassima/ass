@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jamayat;
-
+use App\Models\Tabe3;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -28,9 +28,9 @@ class JamayatsController extends Controller
      */
     public function index()
     {
-        
+            $tabe3s = Tabe3::all();
             $jamayats = Jamayat::all();
-            return view('jamayats.index',['jamayats'=>$jamayats]);
+            return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
         
     }
     
@@ -187,25 +187,47 @@ class JamayatsController extends Controller
         //     $jamayats = Jamayat::where([['tabaa',$request->tabe3],['baladia',$request->apcs]])->get();
         // }
     
-         return view('jamayats.index ',['jamayats'=>$jamayats]);
+        //  return view('jamayats.index ',['jamayats'=>$jamayats]);
+        $tabe3s = Tabe3::all();
+         
+        if ($request->apcs != 'allapcs') {
+            
+            $jamayats = Jamayat::where( 'baladia' , $request->apcs)->get();
+        }
 
-         if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' ) {
+        if ($request->tabe3 != 'alltabe3') {
+            $jamayats = Jamayat::where('tabaa', 'LIKE' , '%'.$request->tabe3.'%')->get();
+        }
+        
+        if ($request->wad3ia != 'all0and1') {
+            $jamayats = Jamayat::where('nachta','LIKE' ,'%'.$request->wad3ia.'%')->get();
+        }
+
+        if ($request->apcs!= 'allapcs' && $request->tabe3 != 'alltabe3'  ) {
+            
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['tabaa', 'LIKE' , '%'.$request->tabe3 .'%']])->get();
+        }
+
+        if ($request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1'  ) {
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        }
+
+        if ($request->tabe3!= 'alltabe3' && $request->wad3ia!= 'all0and1'  ) {
+            
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        }
+
+        if ($request->tabe3!= 'alltabe3' && $request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1' ) {
+           
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        }
+        if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' && $request->wad3ia === 'all0and1' ) {
+           
             $jamayats = Jamayat::all();
         }
 
-        if ($request->apcs) {
-            $jamayats = Jamayat::where('baladia',$request->apcs)->get();
-        }
-
-        if ($request->tabe3) {
-            $jamayats = Jamayat::where('tabaa',$request->tabe3)->get();
-        }
-
-        if ($request->tabe3 != 'alltabe3' && $request->apcs != 'allapcs' ) {
-            $jamayats = Jamayat::where([['tabaa',$request->tabe3],['baladia',$request->apcs]])->get();
-        }
-    
-    
+        return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
     }
+   
 
 }

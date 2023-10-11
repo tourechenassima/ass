@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JamayatsController;
+use App\Http\Controllers\TabaasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +25,20 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::resource('tabe3s', TabaasController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('jamayats', JamayatsController::class);
+    
     Route::get('/nossoss', function () {
         return view('nossoss');
     })->name('nossoss');
