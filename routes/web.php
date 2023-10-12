@@ -45,5 +45,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/jamayyats-pdf', [JamayatsController::class, 'jamayyats_pdf'])->name('jamayyats-pdf');
+
+Route::get('/jamayyats-pdf-filtree', [JamayatsController::class, 'jamayyats_pdf_filtree'])->name('jamayyats-pdf-filtree');
+
 Route::get('/filtre-apcs', [JamayatsController::class, 'filtreapcs'])->name('filtreapcs');
+
+ Route::get('/printwithfilter', [JamayatsController::class, 'versjamayatspdffiltree'])->name('imprimerjamayatsfiltrees');
+
+
 require __DIR__.'/auth.php';

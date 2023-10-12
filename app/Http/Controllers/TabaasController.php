@@ -72,7 +72,6 @@ class TabaasController extends Controller
           
         Tabe3::where('id', $id)->delete();
         return redirect()->route('tabe3s.index')->with('message','تم الحذف');
-        
        
     }
 }

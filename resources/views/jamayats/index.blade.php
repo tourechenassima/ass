@@ -1,10 +1,13 @@
   <x-app-layout>
+    
       <div class="  rounded-lg mt-20 pl-50 flex flex-row justify-around  ">
         <div>
-          <a href="{{route('jamayats.create')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400  hover:bg-rose-700 "> إدخال جمعية جديدة</a>
-          <a href="{{route('jamayyats-pdf')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400 hover:bg-rose-700 ">  طباعة قائمة الجمعيات</a>
-        </div>
+          <a href="{{route('jamayats.create')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400  hover:bg-rose-700 transition duration-150"> إدخال جمعية جديدة</a>
+          <a href="{{route('imprimerjamayatsfiltrees')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400 hover:bg-rose-700 transition duration-150 ">  طباعة قائمة الجمعيات</a>
+</div>
+
         <div>
+
 
           <form action="{{route('filtreapcs')}}" method="POST" class="flex flex-row justify-between  ">
              {{ csrf_field() }}
@@ -18,7 +21,6 @@
               <option value="ثنية العابد">ثنية العابد</option>
               <option value="وادي الطاقة">وادي الطاقة</option>
             </select>
-            
             <select  name="tabe3" id="tabe3" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر الطابع</option> --}}
@@ -41,7 +43,7 @@
             <br><br>
             
             <button class="border border-blue-600 bg-gray-100 rounded-lg m-2 p-2 " type="submit">تخصيص</button> 
-            
+
           </form>
         </div> 
           

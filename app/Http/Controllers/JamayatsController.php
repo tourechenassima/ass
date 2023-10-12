@@ -33,9 +33,7 @@ class JamayatsController extends Controller
             return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
         
     }
-    
-
-
+   
 
 
     /**
@@ -43,8 +41,7 @@ class JamayatsController extends Controller
      */
     public function create()
     {
-            
-        return view('jamayats.create');
+            return view('jamayats.create');
     }
 
     /**
@@ -136,58 +133,15 @@ class JamayatsController extends Controller
         //
     }
     
-    public function jamayyats_pdf()
+    public function jamayyats_pdf( )    
     {
+       
         $jamayats = Jamayat::all();
-        
-      
         return view('jamayats.jamayyatspdf',['jamayats'=>$jamayats]);
-        
-        
-        
-    }
-
-
-    public function send_email_pdf()
-    {
-      
-        $data["email"] = "etp.achihocine@gmail.com";
-        $data["title"] = "about mail and pdf";
-        $data["body"] = "Hello I am nassima toureche";
-  
-        $pdf = PDF::loadView('test', $data);
-  
-        Mail::send('test', $data, function($message)use($data, $pdf) {
-            $message->to($data["email"])
-                    ->subject($data["title"])
-                    ->attachData($pdf->output(), "test.pdf");
-        });
-  
-        dd('Mail sent successfully');
-    }
-
-    /**
-     * فلترة  .
-     */
-    public function filtreapcs(Request $request)
-    {
-        // if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' ) {
-        //     $jamayats = Jamayat::all();
-        // }
-
-        // if ($request->tabe3 === 'alltabe3' && $request->apcs != 'allapcs' ) {
-        //     $jamayats = Jamayat::where('baladia',$request->apcs)->get();
-        // }
-
-        // if ($request->tabe3 != 'alltabe3' && $request->apcs === 'allapcs' ) {
-        //     $jamayats = Jamayat::where('tabaa',$request->tabe3)->get();
-        // }
-
-        // if ($request->tabe3 != 'alltabe3' && $request->apcs != 'allapcs' ) {
-        //     $jamayats = Jamayat::where([['tabaa',$request->tabe3],['baladia',$request->apcs]])->get();
-        // }
     
-        //  return view('jamayats.index ',['jamayats'=>$jamayats]);
+    }
+    public function jamayyats_pdf_filtree(Request $request)    
+    {
         $tabe3s = Tabe3::all();
          
         if ($request->apcs != 'allapcs') {
@@ -226,7 +180,81 @@ class JamayatsController extends Controller
             $jamayats = Jamayat::all();
         }
 
+        
+        return view('jamayats.jamayyatspdf ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+    
+    }
+     public function versjamayatspdffiltree()
+ {        $tabe3s = Tabe3::all();
+          $jamayats = Jamayat::all();
+     return view('jamayats.jamayatspdffiltree',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+ }
+
+    public function send_email_pdf()
+    {
+      
+        $data["email"] = "etp.achihocine@gmail.com";
+        $data["title"] = "about mail and pdf";
+        $data["body"] = "Hello I am nassima toureche";
+  
+        $pdf = PDF::loadView('test', $data);
+  
+        Mail::send('test', $data, function($message)use($data, $pdf) {
+            $message->to($data["email"])
+                    ->subject($data["title"])
+                    ->attachData($pdf->output(), "test.pdf");
+        });
+  
+        dd('Mail sent successfully');
+    }
+
+    /**
+     * فلترة  .
+     */
+    public function filtreapcs(Request $request)
+    {
+        
+        $tabe3s = Tabe3::all();
+         
+        if ($request->apcs != 'allapcs') {
+            
+            $jamayats = Jamayat::where( 'baladia' , $request->apcs)->get();
+        }
+
+        if ($request->tabe3 != 'alltabe3') {
+            $jamayats = Jamayat::where('tabaa', 'LIKE' , '%'.$request->tabe3.'%')->get();
+        }
+        
+        if ($request->wad3ia != 'all0and1') {
+            $jamayats = Jamayat::where('nachta','LIKE' ,'%'.$request->wad3ia.'%')->get();
+        }
+
+        if ($request->apcs!= 'allapcs' && $request->tabe3 != 'alltabe3'  ) {
+            
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['tabaa', 'LIKE' , '%'.$request->tabe3 .'%']])->get();
+        }
+
+        if ($request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1'  ) {
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        }
+
+        if ($request->tabe3!= 'alltabe3' && $request->wad3ia!= 'all0and1'  ) {
+            
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        }
+
+        if ($request->tabe3!= 'alltabe3' && $request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1' ) {
+           
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        }
+        if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' && $request->wad3ia === 'all0and1' ) {
+           
+            $jamayats = Jamayat::all();
+        }
+
+        
         return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+
     }
    
 
