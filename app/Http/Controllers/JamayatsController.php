@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jamayat;
 use App\Models\Tabe3;
+use App\Models\Apc;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -29,8 +30,9 @@ class JamayatsController extends Controller
     public function index()
     {
             $tabe3s = Tabe3::all();
+            $apcs = Apc::all();
             $jamayats = Jamayat::all();
-            return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+            return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
         
     }
    
@@ -41,7 +43,9 @@ class JamayatsController extends Controller
      */
     public function create()
     {
-            return view('jamayats.create');
+            $tabe3s = Tabe3::all();
+            $apcs = Apc::all();
+            return view('jamayats.create',['tabe3s'=>$tabe3s,'apcs'=>$apcs]);
     }
 
     /**
@@ -49,36 +53,35 @@ class JamayatsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'tasmia'=>'required',
-            'rakm-itimad'=> 'required',
-            'tarikh-tassiss'=> 'required',
-            'halat-elmilef'=> 'required',
-            'tabaa'=> 'required',
-            'kitaa'=> 'required',
-            'rakm-itimad'=> 'required',
-            'nom-president'=> 'required',
-            'prenom-president'=> 'required',
-            'email'=> 'required',
-            'nachta'=> 'required',
-            'adresse'=> 'required',
-            'phone'=> 'required',
-            'baladia'=> 'required',
-            'description'=> 'required',
-            'tarikh-tajdid1'=> 'required',
-            'tarikh-tajdid2'=> 'required',
-            'tarikh-tajdid3'=> 'required',
-            'tarikh-tajdid4'=> 'required',
-            'tarikh-tajdid5'=> 'required',
+        // $request->validate([
+        //     'tasmia'=>'required',
+        //     'rakm-itimad'=> 'required',
+        //     'tarikh-tassiss'=> 'required',
+        //     'halat-elmilef'=> 'required',
+        //     'tabaa'=> 'required',
+        //     'kitaa'=> 'required',
+        //     'rakm-itimad'=> 'required',
+        //     'nom-president'=> 'required',
+        //     'prenom-president'=> 'required',
+        //     'email'=> 'required',
+        //     'nachta'=> 'required',
+        //     'adresse'=> 'required',
+        //     'phone'=> 'required',
+        //     'baladia'=> 'required',
+        //     'description'=> 'required',
+        //     'tarikh-tajdid1'=> 'required',
+        //     'tarikh-tajdid2'=> 'required',
+        //     'tarikh-tajdid3'=> 'required',
+        //     'tarikh-tajdid4'=> 'required',
+        //     'tarikh-tajdid5'=> 'required',
             
-        ]);
-
+        // ]);
         Jamayat::create([
             'tasmia'=>$request->input('tasmia'),
             'rakm-itimad'=>$request->input('rakm-itimad'),
             'tarikh-tassiss'=>$request->input('tarikh-tassiss'),
             'halat-elmilef'=>$request->input('halat-elmilef'),
-            'tabaa'=>$request->input('tabaa'),
+            'tabaa'=>$request->tabe3,
             'kitaa'=>$request->input('kitaa'),
             'rakm-itimad'=>$request->input('rakm-itimad'),
             'nom-president'=>$request->input('nom-president'),
@@ -87,7 +90,7 @@ class JamayatsController extends Controller
             'nachta'=>$request->input('nachta'),
             'adresse'=>$request->input('adresse'),
             'phone'=>$request->input('phone'),
-            'baladia'=>$request->input('baladia'),
+            'baladia'=>$request->apc,
             'description'=>$request->input('description'),
             'tarikh-tajdid1'=>$request->input('tarikh-tajdid1'),
             'tarikh-tajdid2'=>$request->input('tarikh-tajdid2'),
@@ -143,6 +146,7 @@ class JamayatsController extends Controller
     public function jamayyats_pdf_filtree(Request $request)    
     {
         $tabe3s = Tabe3::all();
+        $apcs = Apc::all();
          
         if ($request->apcs != 'allapcs') {
             
@@ -181,13 +185,14 @@ class JamayatsController extends Controller
         }
 
         
-        return view('jamayats.jamayyatspdf ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+        return view('jamayats.jamayyatspdf ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
     
     }
      public function versjamayatspdffiltree()
  {        $tabe3s = Tabe3::all();
+          $apcs = Apc::all();
           $jamayats = Jamayat::all();
-     return view('jamayats.jamayatspdffiltree',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+     return view('jamayats.jamayatspdffiltree',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
  }
 
     public function send_email_pdf()
@@ -213,14 +218,13 @@ class JamayatsController extends Controller
      */
     public function filtreapcs(Request $request)
     {
-        
-        $tabe3s = Tabe3::all();
-         
-        if ($request->apcs != 'allapcs') {
-            
-            $jamayats = Jamayat::where( 'baladia' , $request->apcs)->get();
-        }
+        dd($request->apc);
 
+        $tabe3s = Tabe3::all();
+        $apcs = Apc::all();
+        if ($request->apc != 'allapcs') {
+            $jamayats = Jamayat::where( 'baladia' , 'LIKE' , '%'.$request->apc .'%')->get();
+        }
         if ($request->tabe3 != 'alltabe3') {
             $jamayats = Jamayat::where('tabaa', 'LIKE' , '%'.$request->tabe3.'%')->get();
         }
@@ -229,31 +233,31 @@ class JamayatsController extends Controller
             $jamayats = Jamayat::where('nachta','LIKE' ,'%'.$request->wad3ia.'%')->get();
         }
 
-        if ($request->apcs!= 'allapcs' && $request->tabe3 != 'alltabe3'  ) {
+        if ($request->apc != 'allapcs' && $request->tabe3 != 'alltabe3'  ) {
             
-            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['tabaa', 'LIKE' , '%'.$request->tabe3 .'%']])->get();
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apc.'%'],['tabaa', 'LIKE' , '%'.$request->tabe3.'%']])->get();
         }
 
-        if ($request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1'  ) {
-            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+        if ($request->apc != 'allapcs' && $request->wad3ia != 'all0and1'  ) {
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apc.'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
         }
 
-        if ($request->tabe3!= 'alltabe3' && $request->wad3ia!= 'all0and1'  ) {
+        if ($request->tabe3 != 'alltabe3' && $request->wad3ia != 'all0and1'  ) {
             
             $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
         }
 
-        if ($request->tabe3!= 'alltabe3' && $request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1' ) {
+        if ($request->tabe3!= 'alltabe3' && $request->apc!= 'allapcs' && $request->wad3ia!= 'all0and1' ) {
            
-            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['baladia' , 'LIKE' , '%'.$request->apc.'%'],['nachta','LIKE' ,'%'.$request->wad3ia.'%']])->get();
         }
-        if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' && $request->wad3ia === 'all0and1' ) {
+        if ($request->tabe3 === 'alltabe3' && $request->apc === 'allapcs' && $request->wad3ia === 'all0and1' ) {
            
             $jamayats = Jamayat::all();
         }
 
         
-        return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s]);
+        return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
 
     }
    

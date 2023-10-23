@@ -12,14 +12,18 @@
                 
                    <div class="p-6 text-gray-900   " dir="rtl">
                     <table>
-                        @foreach ($tabe3s as $tabe3 )
+                        @foreach ($apcs as $apc )
                         <tr >
                             
-                            <td class="py-4">{{$tabe3->name}}</td>
+                            <td class="py-4">{{$apc->name}}</td>
                             
                             
                             <td class="py-4">
-                            <a href="{{route('tabe3s.destroy',$tabe3->id)}}" class="m-2 text-slate-50 rounded-full decoration-0 font-bold text-lg p-0   bg-red-400  hover:bg-rose-700 "> حذف </a>
+                                <form action="{{route('apcs.destroy',$apc->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                        <button type="submit"   class="m-2 text-slate-50 rounded-full decoration-0 font-bold text-lg p-0   bg-red-400  hover:bg-rose-700 "> حذف </button>
+                                </form>
                         </td>
                             
                         </tr>
@@ -27,12 +31,17 @@
                     </table>
                    </div>
                     <div>
-                                            <a href="{{route('tabe3s.create')}}" class="m-auto text-slate-50 rounded-lg decoration-0 font-bold text-lg px-2 mt-6  bg-green-400  hover:bg-green-700 "> إضافة طابع</a>
+                            <a href="{{route('apcs.create')}}" class="m-auto text-slate-50 rounded-lg decoration-0 font-bold text-lg px-2 mt-6  bg-green-400  hover:bg-green-700 "> إضافة بلدية</a>
 
                     </div>
 
                 </div>
             </div>
+
+
+
+
+
 
 
             <div class="bg-white border border-gray-400 overflow-hidden shadow-sm sm:rounded-lg w-1/3   flex flex-row justify-around items-center ">
@@ -42,20 +51,20 @@
                     <table>
                         @foreach ($tabe3s as $tabe3 )
                         <tr >
-                            
                             <td class="py-4">{{$tabe3->name}}</td>
-                            
-                            
                             <td class="py-4">
-                            <a href="{{route('tabe3s.destroy',$tabe3->id)}}" class="m-2 text-slate-50 rounded-full decoration-0 font-bold text-lg p-0   bg-red-400  hover:bg-rose-700 "> حذف </a>
-                        </td>
-                            
+                                <form action="{{route('tabe3s.destroy',$tabe3->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                        <button type="submit"   class="m-2 text-slate-50 rounded-full decoration-0 font-bold text-lg p-0   bg-red-400  hover:bg-rose-700 "> حذف </button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </table>
                    </div>
                     <div>
-                                            <a href="{{route('tabe3s.create')}}" class="m-auto text-slate-50 rounded-lg decoration-0 font-bold text-lg px-2 mt-6  bg-green-400  hover:bg-green-700 "> إضافة طابع</a>
+                      <a href="{{route('tabe3s.create')}}" class="m-auto text-slate-50 rounded-lg decoration-0 font-bold text-lg px-2 mt-6  bg-green-400  hover:bg-green-700 "> إضافة طابع</a>
 
                     </div>
 

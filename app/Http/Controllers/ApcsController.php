@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tabe3;
 use App\Models\Apc;
+use App\Models\Tabe3;
 
-class TabaasController extends Controller
+class ApcsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tabe3s = Tabe3::all();
-        $apcs = Apc::all();
-        return view('dashboard',['tabe3s'=>$tabe3s],['apcs'=>$apcs]);
+        //
     }
 
     /**
@@ -23,7 +21,7 @@ class TabaasController extends Controller
      */
     public function create()
     {
-        return view('tabe3s.create');
+        return view('apcs.create');
     }
 
     /**
@@ -31,13 +29,9 @@ class TabaasController extends Controller
      */
     public function store(Request $request)
     {
-        //  $request->validate([
-        //      'name'=>'required'
-        //  ]);
-
-        Tabe3::create([
+        Apc::create([
             
-            'name'=>$request->input('nametabe3'),
+            'name'=>$request->input('nameapc'),
         ]);
         return redirect()->route('tabe3s.index');
     }
@@ -71,9 +65,7 @@ class TabaasController extends Controller
      */
     public function destroy(string $id)
     {
-          
-        Tabe3::where('id', $id)->delete();
+        Apc::where('id', $id)->delete();
         return redirect()->route('tabe3s.index')->with('message','تم الحذف');
-       
     }
 }

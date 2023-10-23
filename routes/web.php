@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JamayatsController;
 use App\Http\Controllers\TabaasController;
+use App\Http\Controllers\ApcsController;
+
 
 
 /*
@@ -31,6 +33,8 @@ Route::get('/welcome', function () {
 
 
 Route::resource('tabe3s', TabaasController::class);
+Route::resource('apcs', ApcsController::class);
+
 
 
 Route::middleware('auth')->group(function () {

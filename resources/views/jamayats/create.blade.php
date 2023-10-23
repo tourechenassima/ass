@@ -18,8 +18,34 @@
      
        <br>
        <div>
-            <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="tabaa" > 
-            <label >الطابع </label>
+
+        
+           
+         <select  name="apc" id="apc" class="rounded-lg m-2 " style="direction: rtl" >
+           {{-- onchange = "this.form.submit()" --}}
+           {{-- <option value="" > اختر البلدية</option> --}}
+           
+           @foreach ($apcs as $apc )
+           
+           <option value={{$apc->name}}> {{$apc->name}}</option> 
+           @endforeach
+           {{-- <option value="شير">شير</option>              
+           <option value="ثنية العابد">ثنية العابد</option>
+           <option value="وادي الطاقة">وادي الطاقة</option> --}}
+         </select>
+         <select  name="tabe3" id="tabe3" class="rounded-lg m-2 " style="direction: rtl" >
+          {{-- onchange = "this.form.submit()" --}}
+          {{-- <option value="" > اختر الطابع</option> --}}
+          @foreach ($tabe3s as $tabe3 )
+          <option value={{$tabe3->name}}> {{$tabe3->name}}</option> 
+           
+          @endforeach
+        </select>
+        
+
+
+
+            
             <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="kitaa" > 
             <label >القطاع </label>
         </div>
@@ -29,7 +55,6 @@
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="nachta" placeholder=" الوضعية  "> <br>
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="adresse" placeholder=" العنوان  "> <br>
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="tel" name="phone" placeholder=" الهاتف  "> <br>
-      <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="baladia" placeholder=" البلدية  "> <br>
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="email" name="email" placeholder=" الإيميل  "> <br>
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="halat-elmilef" placeholder=" حالة الملف  "> <br>
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="description" placeholder=" الوصف  "> <br>

@@ -7,20 +7,22 @@
 </div>
 
         <div>
-
-
           <form action="{{route('filtreapcs')}}" method="POST" class="flex flex-row justify-between  ">
              {{ csrf_field() }}
               @method('get') 
               
-            <select  name="apcs" id="apcs" class="rounded-lg m-2 " style="direction: rtl" >
+            <select  name="apc" id="apc" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر البلدية</option> --}}
               <option value="allapcs" > كل البلديات</option>
-              <option value="شير">شير</option>              
+              @foreach ($apcs as $apc )
+              <option value={{$apc->name}}> {{$apc->name}}</option> 
+              @endforeach
+              {{-- <option value="شير">شير</option>              
               <option value="ثنية العابد">ثنية العابد</option>
-              <option value="وادي الطاقة">وادي الطاقة</option>
+              <option value="وادي الطاقة">وادي الطاقة</option> --}}
             </select>
+
             <select  name="tabe3" id="tabe3" class="rounded-lg m-2 " style="direction: rtl" >
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر الطابع</option> --}}
@@ -29,8 +31,6 @@
               <option value={{$tabe3->name}}> {{$tabe3->name}}</option> 
                
               @endforeach
-                           
-              
             </select>
             
             <select  name="wad3ia" id="wad3ia" class="rounded-lg m-2 " style="direction: rtl" >
@@ -99,21 +99,12 @@
         <!-- More rows... -->
       </tbody>
     </table>
-
       
     </div>
 
-
-
   <br><br>
-
-
   {{-- <div class="p-5 bg-red-200 flex justify-between rounded-lg">
     
     {{ $jamayats->links() }}
   </div> --}}
-
-  
-    
-
   </x-app-layout>
