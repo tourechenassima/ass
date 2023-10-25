@@ -27,7 +27,7 @@
            
            @foreach ($apcs as $apc )
            
-           <option value={{$apc->name}}> {{$apc->name}}</option> 
+           <option value={{$apc->id}}> {{$apc->name}}</option> 
            @endforeach
            {{-- <option value="شير">شير</option>              
            <option value="ثنية العابد">ثنية العابد</option>

@@ -76,6 +76,10 @@ class JamayatsController extends Controller
         //     'tarikh-tajdid5'=> 'required',
             
         // ]);
+        $apcname = Apc::findorfail($request->apc)->name;
+        
+        
+
         Jamayat::create([
             'tasmia'=>$request->input('tasmia'),
             'rakm-itimad'=>$request->input('rakm-itimad'),
@@ -90,7 +94,7 @@ class JamayatsController extends Controller
             'nachta'=>$request->input('nachta'),
             'adresse'=>$request->input('adresse'),
             'phone'=>$request->input('phone'),
-            'baladia'=>$request->apc,
+            'baladia'=>$apcname,
             'description'=>$request->input('description'),
             'tarikh-tajdid1'=>$request->input('tarikh-tajdid1'),
             'tarikh-tajdid2'=>$request->input('tarikh-tajdid2'),
@@ -218,7 +222,7 @@ class JamayatsController extends Controller
      */
     public function filtreapcs(Request $request)
     {
-        dd($request->apc);
+        
 
         $tabe3s = Tabe3::all();
         $apcs = Apc::all();

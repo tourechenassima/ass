@@ -76,24 +76,23 @@
       </thead>
       <tbody class="relative " >
       @foreach($jamayats as $jamaya)
-        <tr class="shadow-sm " >
+        <tr class="shadow-sm hover:bg-green-200  " >
           
-          <td class=" text-right py-4 px-2  w-12">{{$jamaya['id']}} 
-          <td class=" text-right py-4 px-2  w-96 cursor-pointer"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a> </td>
-          <td class=" text-right py-4 px-2  w-40"> {{$jamaya['rakm-itimad']}}</td>
-          <td class=" text-right py-4 px-2  w-60"> {{$jamaya['tarikh-tassiss']}}</td>
-          <td class=" text-right py-4 px-2  w-44"> {{$jamaya['tabaa']}}</td>
-          <td class=" text-right py-4 px-2  w-44"> {{$jamaya['kitaa']}}</td>
-          <td class=" text-right py-4 px-2  w-60"> {{$jamaya['nom-president']}}</td>
-          <td class=" text-right py-4 px-2  w-60"> {{$jamaya['prenom-president']}}</td>
-          <td class=" text-right py-4 px-2  w-44"> {{$jamaya['nachta']}}</td>
-          <td class=" text-right py-4 px-2  w-96">{{$jamaya['adresse']}}</td>
-          <td class=" text-right py-4 px-2  w-40"> {{$jamaya['phone']}}</td>
-          <td class=" text-right py-4 px-2  w-60"> {{$jamaya['baladia']}}</td>
-          <td class=" text-right py-4 px-2  w-76"> {{$jamaya['email']}}</td>
-          <td class=" flex flex-row space-x-1"> 
-            </td>
-
+          <td class=" text-right py-4 px-2  w-12"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['id']}}</a> </td>
+          <td class=" text-right py-4 px-2  w-96 cursor-pointer text-green-700 font-bold text-lg "><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a> </td>
+          <td class=" text-right py-4 px-2  w-40"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['rakm-itimad']}}</a></td>
+          <td class=" text-right py-4 px-2  w-60"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['tarikh-tassiss']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-44"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['tabaa']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-44"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['kitaa']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-60"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['nom-president']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-60"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['prenom-president']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-44"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['nachta']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-96"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['adresse']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-40"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['phone']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-60"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['baladia']}}</a></td> 
+          <td class=" text-right py-4 px-2  w-76"> <a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['email']}}</a></td> 
+          <td class=" flex flex-row space-x-1"> <a href="{{route('jamayats.show',$jamaya['id'])}}">             </a></td>
+          
         </tr>
         @endforeach
         <!-- More rows... -->
