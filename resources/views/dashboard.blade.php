@@ -24,7 +24,7 @@
                                     @method('delete')
                                         <button type="submit"   class="m-2 text-slate-50 rounded-full decoration-0 font-bold text-lg p-0   bg-red-400  hover:bg-rose-700 "> حذف </button>
                                 </form>
-                        </td>
+                            </td>
                             
                         </tr>
                         @endforeach

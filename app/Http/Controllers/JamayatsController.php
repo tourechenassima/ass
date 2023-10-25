@@ -135,9 +135,10 @@ class JamayatsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $jamaya)
     {
-        //
+        Jamayat::where('id', $jamaya)->delete();
+        return redirect()->route('jamayats.index')->with('message','تم الحذف');
     }
     
     public function jamayyats_pdf( )    

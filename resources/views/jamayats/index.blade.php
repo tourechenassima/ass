@@ -76,7 +76,7 @@
       </thead>
       <tbody class="relative " >
       @foreach($jamayats as $jamaya)
-        <tr class="shadow-sm hover:bg-green-200  " >
+        <tr class="shadow-sm hover:bg-green-200 transition duration-150  " >
           
           <td class=" text-right py-4 px-2  w-12"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['id']}}</a> </td>
           <td class=" text-right py-4 px-2  w-96 cursor-pointer text-green-700 font-bold text-lg "><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a> </td>

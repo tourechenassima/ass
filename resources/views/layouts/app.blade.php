@@ -36,7 +36,14 @@
             <main>
                 {{ $slot }}
             </main>
+
         </div>
+        <footer class="flex items-center justify-center bg-slate-200  pt-10 pb-3   ">
+        <h6 class="text-sm mx-10">دائرة ثنية العابد</h6>
+
+       <h6 class="text-sm" >مطور من طرف <span class="rtl">نسيمة طورش</span></h6>
+
+        </footer>
     </body>
     
 </html>
