@@ -17,17 +17,29 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body style="font-family: 'Scheherazade New', serif; ">
+    <body style="font-family: 'Scheherazade New', serif; " >
+        
         <div class="w-full m-auto min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <!-- <div>
+          
+             {{-- <div>
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
-            </div> -->
-
+            </div>  --}}
+            
             <div >
+                
                 {{ $slot }}
             </div>
         </div>
+       
+        <footer class="flex items-center justify-center bg-slate-200  pt-10 pb-3   ">
+            <h6 class="text-sm mx-10">دائرة ثنية العابد</h6>
+    
+           <h6 class="text-sm" >مطور من طرف <span class="rtl">نسيمة طورش</span></h6>
+    
+            </footer>
     </body>
 </html>
+
+

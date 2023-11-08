@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('kitaa');
             $table->string('nom-president');
             $table->string('prenom-president');
-            $table->boolean('nachta');
+            $table->string('nachta');
             $table->string('adresse');
             $table->string('phone');
             $table->string('baladia');

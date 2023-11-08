@@ -1,12 +1,13 @@
   <x-app-layout>
-    
+
       <div class="  rounded-lg mt-20 pl-50 flex flex-row justify-around  ">
         <div>
-          <a href="{{route('jamayats.create')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400  hover:bg-rose-700 transition duration-150"> إدخال جمعية جديدة</a>
-          <a href="{{route('imprimerjamayatsfiltrees')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400 hover:bg-rose-700 transition duration-150 ">  طباعة قائمة الجمعيات</a>
+          <a href="{{route('jamayats.create')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-red-700  hover:bg-rose-500 transition duration-150"> إدخال جمعية جديدة</a>
+          <a href="{{route('imprimerjamayatsfiltrees')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-red-700 hover:bg-rose-500 transition duration-150 ">  طباعة قائمة الجمعيات</a>
 </div>
 
         <div>
+          
           <form action="{{route('filtreapcs')}}" method="POST" class="flex flex-row justify-between  ">
              {{ csrf_field() }}
               @method('get') 
@@ -37,8 +38,10 @@
               {{-- onchange = "this.form.submit()" --}}
               {{-- <option value="" > اختر البلدية</option> --}}
               <option value="all0and1" > نشطة وغير نشطة </option>
-              <option value="1">نشطة فقط</option>              
-              <option value="0"> غير نشطة فقط</option>
+              <option value="نشطة">نشطة فقط</option>              
+              <option value="غيرنشطة"> غير نشطة فقط</option>
+              <option value="ملف_قيدالمعالجة">   ملف قيد المعالجة</option>
+
             </select>
             <br><br>
             
@@ -76,10 +79,12 @@
       </thead>
       <tbody class="relative " >
       @foreach($jamayats as $jamaya)
-        <tr class="shadow-sm hover:bg-green-200 transition duration-150  " >
+        <tr class="shadow-sm hover:bg-gray-100   transition duration-150  " >
           
           <td class=" text-right py-4 px-2  w-12"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['id']}}</a> </td>
-          <td class=" text-right py-4 px-2  w-96 cursor-pointer text-green-700 font-bold text-lg "><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a> </td>
+          <td class="  text-right py-4 px-2  w-96 cursor-pointer text-green-700 font-bold text-lg ">
+            <a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a> 
+          </td>
           <td class=" text-right py-4 px-2  w-40"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['rakm-itimad']}}</a></td>
           <td class=" text-right py-4 px-2  w-60"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['tarikh-tassiss']}}</a></td> 
           <td class=" text-right py-4 px-2  w-44"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['tabaa']}}</a></td> 
@@ -90,7 +95,11 @@
           <td class=" text-right py-4 px-2  w-96"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['adresse']}}</a></td> 
           <td class=" text-right py-4 px-2  w-40"><a href="{{route('jamayats.show',$jamaya['id'])}}"> {{$jamaya['phone']}}</a></td> 
           <td class=" text-right py-4 px-2  w-60"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['baladia']}}</a></td> 
-          <td class=" text-right py-4 px-2  w-76"> <a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['email']}}</a></td> 
+          <td class=" flex flex-row items-center justify-between text-right py-4 px-2  w-76"> 
+            <a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['email']}}</a>
+            <a href="{{route('jamayats.show',$jamaya['id'])}}" class="cursor-pointer m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-red-700  hover:bg-rose-500 transition duration-150">إظهار</a>
+
+          </td> 
           <td class=" flex flex-row space-x-1"> <a href="{{route('jamayats.show',$jamaya['id'])}}">             </a></td>
           
         </tr>

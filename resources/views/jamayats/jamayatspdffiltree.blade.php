@@ -29,8 +29,9 @@
           {{-- onchange = "this.form.submit()" --}}
           {{-- <option value="" > اختر البلدية</option> --}}
           <option value="all0and1" > نشطة وغير نشطة </option>
-          <option value="1">نشطة فقط</option>              
-          <option value="0"> غير نشطة فقط</option>
+              <option value="نشطة">نشطة فقط</option>              
+              <option value="غيرنشطة"> غير نشطة فقط</option>
+              <option value="ملف_قيدالمعالجة">   ملف قيد المعالجة</option>
         </select>
         <br><br>
       </div>

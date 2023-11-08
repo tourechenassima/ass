@@ -1,8 +1,13 @@
 <x-guest-layout>
+    
 @if (Route::has('login'))
+
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 container">
                     @auth
-                    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 ">
+                    <div class="h-80  bg-gray-50  bg-[url('..\views\images\Banner-ar.png')] bg-cover  ">
+            
+                    </div>
+    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="font-family: 'Scheherazade New', serif; ">
         <div class="flex justify-between h-16">
@@ -130,9 +135,10 @@
                     @endauth
                 </div>
 @endif
+
 <div class=" w-full h-screen bg-no-repeat bg-center bg-cover " >
     <div class="rounded-full backdrop-blur-3xl bg-green/30	  w-full flex flex-col  justify-around mx-auto mt-40 p-6 space-x-10  ">
-    <h1 class="rounded-full text-4xl backdrop-blur-3xl bg-green/30 text-green-700  font-bold text-center p-6" >الجمهورية الجزائرية الديمقراطية الشعبية</h1>     
+    {{-- <h1 class="rounded-full text-4xl backdrop-blur-3xl bg-green/30 text-green-700  font-bold text-center p-6" >الجمهورية الجزائرية الديمقراطية الشعبية</h1>      --}}
      
     <h1 class="text-3xl  text-green-700 font-bold text-center p-6 ">دائرة ثنية العابد     </h1>  
        
