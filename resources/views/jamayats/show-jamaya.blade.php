@@ -23,8 +23,7 @@
         <div class="flex flex-row m-3 ">
           <a href="#" class=" text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 m-3  bg-green-600">تجديد</a>
           <a href="{{route('jamayats.edit',$jamaya->id)}}" class="text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2  m-3 bg-slate-400">تغيير معلومات</a>
-
-
+ 
 
           <form action="{{route('jamayats.destroy',$jamaya->id)}}" method="post">
             @csrf
