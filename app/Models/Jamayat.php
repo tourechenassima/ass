@@ -26,7 +26,7 @@ class Jamayat extends Model
         'tarikh-tajdid4',
         'tarikh-tajdid5',
         'tarikh-tajdid6',
-
+        'akherTarikhTajdid',
         'tabaa',
         'kitaa',
         'rakm-itimad',
@@ -80,7 +80,7 @@ class Jamayat extends Model
         'nom-president5',
         'nom-president6',
         'nom-president7',
-
+        'akherTarikhTajdid',
         'prenom-president1',
         'prenom-president2',
         'prenom-president3',

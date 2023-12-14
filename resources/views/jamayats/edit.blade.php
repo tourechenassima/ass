@@ -14,6 +14,7 @@
 
   <select  name="hala" id="hala" class="rounded-lg m-2 " style="direction: rtl" >
     <option value="" >  {{$jamaya['halat-elmilef']}}</option> 
+    <option value="في انتظار رأي ديوان مندوبية الأمن" >  في انتظار رد المصالح المختصة</option> 
     <option value="في انتظار رأي ديوان مندوبية الأمن" >  في انتظار رأي ديوان مندوبية الأمن</option> 
     <option value="في انتظار رأي قائد كتيبة الدرك الوطني" > في انتظار رأي قائد كتيبة الدرك الوطني</option> 
     <option value="في انتظار رد مديرية الشؤون الدينية" > في انتظار رد مديرية الشؤون الدينية</option> 
@@ -61,7 +62,7 @@
  <div dir="rtl" class="flex flex-row justify-around  " >    
       <div>
         <label >تاريخ التجديد</label>
-        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid2" value="{{$jamaya['tarikh-tajdid1']}}" >
+        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid2" value="{{$jamaya['tarikh-tajdid2']}}" >
       </div>
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="rakm-itimad2" placeholder="رقم الإعتماد" value="{{$jamaya['rakm-itimad2']}}" >
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="prenom-president3" placeholder="  إسم الرئيس  " value="{{$jamaya['prenom-president3']}}"> <br>
@@ -71,7 +72,7 @@
  <div dir="rtl" class="flex flex-row justify-around  " >    
       <div>
         <label >تاريخ التجديد</label>
-        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid3" value="{{$jamaya['tarikh-tajdid1']}}" >
+        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid3" value="{{$jamaya['tarikh-tajdid3']}}" >
       </div>
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="rakm-itimad3" placeholder="رقم الإعتماد" value="{{$jamaya['rakm-itimad3']}}" >
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="prenom-president4" placeholder="  إسم الرئيس  " value="{{$jamaya['prenom-president4']}}"> <br>
@@ -81,7 +82,7 @@
  <div dir="rtl" class="flex flex-row justify-around  " >    
       <div>
         <label >تاريخ التجديد</label>
-        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid4" value="{{$jamaya['tarikh-tajdid1']}}">
+        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid4" value="{{$jamaya['tarikh-tajdid4']}}">
       </div> 
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="rakm-itimad4" placeholder="رقم الإعتماد" value="{{$jamaya['rakm-itimad4']}}"  >
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="prenom-president5" placeholder="  إسم الرئيس  " value="{{$jamaya['prenom-president5']}}"> <br>
@@ -91,7 +92,7 @@
  <div dir="rtl" class="flex flex-row justify-around  " >    
       <div>
         <label >تاريخ التجديد</label> 
-        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid5" value="{{$jamaya['tarikh-tajdid1']}}">
+        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid5" value="{{$jamaya['tarikh-tajdid5']}}">
       </div>
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="rakm-itimad5" placeholder="رقم الإعتماد" value="{{$jamaya['rakm-itimad5']}}">
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="prenom-president6" placeholder="  إسم الرئيس  " value="{{$jamaya['prenom-president6']}}"> <br>
@@ -100,7 +101,7 @@
  <div dir="rtl" class="flex flex-row justify-around  " >    
       <div>
         <label >تاريخ التجديد</label>
-        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid6" value="{{$jamaya['tarikh-tajdid1']}}">
+        <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tajdid6" value="{{$jamaya['tarikh-tajdid6']}}">
       </div>
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="rakm-itimad6" placeholder="رقم الإعتماد" value="{{$jamaya['rakm-itimad6']}}">
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-1/4" type="text" name="prenom-president7" placeholder="  إسم الرئيس  " value="{{$jamaya['prenom-president7']}}"> <br>

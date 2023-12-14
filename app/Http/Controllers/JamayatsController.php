@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Jamayat;
 use App\Models\Tabe3;
 use App\Models\Apc;
-
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -19,6 +18,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use PDF;
+use Carbon\Carbon;
 use Mail;
 class JamayatsController extends Controller
 {
@@ -30,7 +30,10 @@ class JamayatsController extends Controller
             $tabe3s = Tabe3::all();
             $apcs = Apc::all();
             $jamayats = Jamayat::all();
-            return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
+            $maintenant = Carbon::now()->format('Y-m-d');
+            
+            // $difference = $maintenant->diff($date2);
+            return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs,'maintenant'=>$maintenant]);
     }
       /* Show the form for creating a new resource.
      */
@@ -42,7 +45,7 @@ class JamayatsController extends Controller
     }
     /**
      * Store a newly created resource in storage.
-     */
+     */   
     public function store(Request $request)
     {
         // $request->validate([
@@ -107,9 +110,14 @@ class JamayatsController extends Controller
             'tarikh-tajdid4'=>$request->input('tarikh-tajdid4'),
             'tarikh-tajdid5'=>$request->input('tarikh-tajdid5'),
             'tarikh-tajdid6'=>$request->input('tarikh-tajdid6'),
+
+            'akherTarikhTajdid'=> max($request->input('tarikh-tassiss'),$request->input('tarikh-tajdid1'),$request->input('tarikh-tajdid2'),$request->input('tarikh-tajdid3'),$request->input('tarikh-tajdid4'),$request->input('tarikh-tajdid5'),$request->input('tarikh-tajdid6')),
+            
+
             'slug'=>Str::of('tasmia')->slug('-'),
             'user_id'=>  auth()->user()->id 
         ]);
+
         return redirect('/jamayats');
     }
 
@@ -169,6 +177,8 @@ class JamayatsController extends Controller
     'tarikh-tajdid4'=>$request->input('tarikh-tajdid4'),
     'tarikh-tajdid5'=>$request->input('tarikh-tajdid5'),
     'tarikh-tajdid6'=>$request->input('tarikh-tajdid6'),
+    'akherTarikhTajdid'=> max($request->input('tarikh-tassiss'),$request->input('tarikh-tajdid1'),$request->input('tarikh-tajdid2'),$request->input('tarikh-tajdid3'),$request->input('tarikh-tajdid4'),$request->input('tarikh-tajdid5'),$request->input('tarikh-tajdid6')),
+
     'email'=>$request->input('email'),
     'nachta'=>$request->nachta,
     'adresse'=>$request->input('adresse'),
@@ -195,7 +205,7 @@ class JamayatsController extends Controller
     }
     public function jamayyats_pdf_filtree(Request $request)    
     {
-        $tabe3s = Tabe3::all();
+        $tabe3s = Tabe3::all();  
         $apcs = Apc::all();
         if ($request->apcs != 'allapcs') {
            $jamayats = Jamayat::where( 'baladia' , $request->apcs)->get();
@@ -274,5 +284,17 @@ class JamayatsController extends Controller
             $jamayats = Jamayat::all();
         }
         return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
+    }
+
+    public function compare(string $id)
+    {
+        $jamaya = Jamayat::where('id',$id)->first();
+        $tabe3s = Tabe3::all();
+        $apcs = Apc::all();
+        dd($jamaya);
+        $maintenant = Carbon::now()->format('Y-m-d');
+        
+        // $difference = $maintenant->diff($date2);
+        return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs,'maintenant'=>$maintenant]);
     }
 }

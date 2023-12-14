@@ -17,7 +17,6 @@
     #print-button{
       display:none;
     }
-
   }
 </style>
   <x-app-layout>
@@ -27,7 +26,7 @@
     <div id="print"  class=" flex flex-col justify-center items-center   border border-gray-700 font-bold  bg-white p-0 "  >
         <h1 class="flex flex-col justify-center   items-center text-2xl font-bold  bg-white p-5 m-5">الجمهورية الجزائرية الديمقراطية الشعبية </h1>
 
-        <div  class=" flex flex-col justify-center items-end text-xl font-bold bg-white p-0 w-full mr-60 mt-100   "  >
+        <div  class=" flex flex-col justify-center items-end text-xl font-bold p-0 w-full mr-60 mt-100   "  >
             <h2 >ولاية: باتنة</h2>
             <h2>دائرة: ثنية العابد</h2>
         </div>
@@ -39,12 +38,9 @@
           <tr class=" bg-white shadow-xl  text-lg bg-gray-50">
             <th class="text-right py-2 px-2 w-12"> الرقم</th>
             <th class="text-right py-2 px-2 w-96 "> تسمية الجمعية</th>
-            <th class="text-right py-2 px-2 w-40"> رقم الإعتماد</th>
             <th class="text-right py-2 px-2 w-60"> تاريخ التأسيس</th>
             <th class="text-right py-2 px-2 w-44"> الطابع</th>
             <th class="text-right py-2 px-2 w-44"> القطاع</th>
-            <th class="text-right py-2 px-2 w-60"> إسم الرئيس</th>
-            <th class="text-right py-2 px-2 w-60"> لقب الرئيس</th>
             <th class="text-right py-2 px-2 w-44"> الوضعية</th>
             <th class="text-right py-2 px-2 w-96"> العنوان</th>
             <th class="text-right py-2 px-2 w-40"> الهاتف</th>
@@ -59,12 +55,9 @@
             
             <td class=" text-right py-4 px-2  w-12">{{$jamaya['id']}} 
             <td class=" text-right py-4 px-2  w-96"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a> </td>
-            <td class=" text-right py-4 px-2  w-40"> {{$jamaya['rakm-itimad']}}</td>
             <td class=" text-right py-4 px-2  w-60"> {{$jamaya['tarikh-tassiss']}}</td>
             <td class=" text-right py-4 px-2  w-44"> {{$jamaya['tabaa']}}</td>
             <td class=" text-right py-4 px-2  w-44"> {{$jamaya['kitaa']}}</td>
-            <td class=" text-right py-4 px-2  w-60"> {{$jamaya['nom-president']}}</td>
-            <td class=" text-right py-4 px-2  w-60"> {{$jamaya['prenom-president']}}</td>
             <td class=" text-right py-4 px-2  w-44"> {{$jamaya['nachta']}}</td>
             <td class=" text-right py-4 px-2  w-96">{{$jamaya['adresse']}}</td>
             <td class=" text-right py-4 px-2  w-40"> {{$jamaya['phone']}}</td>
@@ -90,8 +83,8 @@
      
  <script >
   function printDiv(){
-    var printContent = document.getElementById('print').innerHTML;
-    var originalContent = document.body.innerHTML;
+    let printContent = document.getElementById('print').innerHTML;
+    let originalContent = document.body.innerHTML;
     document.body.innerHTML = printContent;
     window.print();
     document.body.innerHTML = originalContent;

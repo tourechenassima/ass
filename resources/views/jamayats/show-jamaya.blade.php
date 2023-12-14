@@ -13,7 +13,6 @@
         <h1 class="text-2xl font-bold ">{{$jamaya->tasmia}}</h1>
         <br>
         <h1>{{$jamaya->adresse}}</h1>
-
         <h1>{{$jamaya['nachta']}}</h1>
 
         

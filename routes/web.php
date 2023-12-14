@@ -38,4 +38,6 @@ Route::get('/jamayyats-pdf', [JamayatsController::class, 'jamayyats_pdf'])->name
 Route::get('/jamayyats-pdf-filtree', [JamayatsController::class, 'jamayyats_pdf_filtree'])->name('jamayyats-pdf-filtree');
 Route::get('/filtre-apcs', [JamayatsController::class, 'filtreapcs'])->name('filtreapcs');
 Route::get('/printwithfilter', [JamayatsController::class, 'versjamayatspdffiltree'])->name('imprimerjamayatsfiltrees');
+Route::get('/compare', [JamayatsController::class, 'compare'])->name('jamayats.compare');
+
 require __DIR__.'/auth.php';
