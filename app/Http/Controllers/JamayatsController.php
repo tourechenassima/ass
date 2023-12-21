@@ -29,9 +29,11 @@ class JamayatsController extends Controller
     {
             $tabe3s = Tabe3::all();
             $apcs = Apc::all();
-            $jamayats = Jamayat::all();
             $maintenant = Carbon::now()->format('Y-m-d');
-            
+            $depuisTroisAns = Carbon::parse(now()->format('Y-m-d'))->subYears(3);
+            Jamayat::where([['akherTarikhTajdid','<',$depuisTroisAns],['nachta', 'نشطة']])->update(['nachta'=>'غيرنشطة']);
+            Jamayat::where('akherTarikhTajdid','>=',$depuisTroisAns)->update(['nachta'=>'نشطة']);
+            $jamayats = Jamayat::all();
             // $difference = $maintenant->diff($date2);
             return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs,'maintenant'=>$maintenant]);
     }
@@ -143,7 +145,30 @@ class JamayatsController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $jamaya)
-    {        
+    {    
+        //  $request->validate([
+        //     'tasmia'=>'required',
+        //     'rakm-itimad'=> 'required',
+        //     'tarikh-tassiss'=> 'required',
+        //     'halat-elmilef'=> 'required',
+        //     'tabaa'=> 'required',
+        //     'kitaa'=> 'required',
+        //     'rakm-itimad'=> 'required',
+        //     'nom-president'=> 'required',
+        //     'prenom-president'=> 'required',
+        //     'email'=> 'required',
+        //     'nachta'=> 'required',
+        //     'adresse'=> 'required',
+        //    'phone'=> 'required',
+         //    'baladia'=> 'required',
+        //     'description'=> 'required',
+        //     'tarikh-tajdid1'=> 'required',
+        //     'tarikh-tajdid2'=> 'required',
+        //     'tarikh-tajdid3'=> 'required',
+        //     'tarikh-tajdid4'=> 'required',
+        //     'tarikh-tajdid5'=> 'required',
+        // ]);
+        
     Jamayat::where('id',$jamaya)->first()->update([
     'tasmia'=>$request->input('tasmia'),
     'rakm-itimad'=>$request->input('rakm-itimad'),
@@ -283,18 +308,20 @@ class JamayatsController extends Controller
         if ($request->tabe3 === 'alltabe3' && $request->apc === 'allapcs' && $request->wad3ia === 'all0and1' ) {
             $jamayats = Jamayat::all();
         }
+
+
         return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
     }
 
-    public function compare(string $id)
-    {
-        $jamaya = Jamayat::where('id',$id)->first();
-        $tabe3s = Tabe3::all();
-        $apcs = Apc::all();
-        dd($jamaya);
-        $maintenant = Carbon::now()->format('Y-m-d');
+    // public function compare(string $id)
+    // {
+    //     $jamaya = Jamayat::where('id',$id)->first();
+    //     $tabe3s = Tabe3::all();
+    //     $apcs = Apc::all();
+    //     dd($jamaya);
+    //     $maintenant = Carbon::now()->format('Y-m-d');
         
-        // $difference = $maintenant->diff($date2);
-        return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs,'maintenant'=>$maintenant]);
-    }
+    //     // $difference = $maintenant->diff($date2);
+    //     return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs,'maintenant'=>$maintenant]);
+    // }
 }

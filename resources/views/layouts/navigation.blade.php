@@ -16,6 +16,7 @@
                     <h1 class="text-3xl   font-bold text-center p-6 ">دائرة ثنية العابد     </h1>  
 
                 </div>
+
             <div class="flex">
 
             

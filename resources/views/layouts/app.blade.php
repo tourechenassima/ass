@@ -17,7 +17,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body style="font-family: 'Scheherazade New', serif;" class="content-center">
+    <body style="font-family: 'Scheherazade New', serif;" class="content-center"  >
     {{-- <h1 class="rounded-full text-4xl backdrop-blur-3xl bg-green/30 text-green-700  font-bold text-center p-6" >الجمهورية الجزائرية الديمقراطية الشعبية</h1>      --}}
     
         <div class="min-h-screen bg-white ">
@@ -47,6 +47,8 @@
        <h6 class="text-sm" >مطور من طرف <span class="rtl">نسيمة طورش</span></h6>
 
         </footer>
+        <script type="module" src="{{ mix('resources/js/app.js') }}"></script>
+
     </body>
     
 </html>

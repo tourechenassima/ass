@@ -9,12 +9,20 @@
       @csrf
       @method('PUT')
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="tasmia" value="{{$jamaya->tasmia}}"> <br>
+  <div>
+  <select  name="nachta" id="nachta" class="rounded-lg m-2 text-lg font-bold " style="direction: rtl" >
+    <option value={{$jamaya->nachta}}>{{$jamaya->nachta}}</option> 
+    <option value="نشطة">نشطة</option> 
+    <option value="غيرنشطة"> غير نشطة </option> 
+    <option value="ملف_قيدالمعالجة">  ملف قيد المعالجة </option> 
 
-<div>
+  </select>
+</div>
+<div class = "flex justify-center ">
 
-  <select  name="hala" id="hala" class="rounded-lg m-2 " style="direction: rtl" >
+  <select  name="hala" id="hala" class="rounded-lg m-2 hidden" style="direction: rtl" >
     <option value="" >  {{$jamaya['halat-elmilef']}}</option> 
-    <option value="في انتظار رأي ديوان مندوبية الأمن" >  في انتظار رد المصالح المختصة</option> 
+    <option value="في انتظار رد المصالح المختصة" >  في انتظار رد المصالح المختصة</option> 
     <option value="في انتظار رأي ديوان مندوبية الأمن" >  في انتظار رأي ديوان مندوبية الأمن</option> 
     <option value="في انتظار رأي قائد كتيبة الدرك الوطني" > في انتظار رأي قائد كتيبة الدرك الوطني</option> 
     <option value="في انتظار رد مديرية الشؤون الدينية" > في انتظار رد مديرية الشؤون الدينية</option> 
@@ -29,17 +37,10 @@
     <option value="نقص البيانات في الملف"  >   </option> 
 
   </select>
+  </div>
 
-  <select  name="nachta" id="nachta" class="rounded-lg m-2 " style="direction: rtl" >
-    <option value={{$jamaya->nachta}}>{{$jamaya->nachta}}</option> 
-    <option value="نشطة">نشطة</option> 
-    <option value="غيرنشطة"> غير نشطة </option> 
-    <option value="ملف_قيدالمعالجة">  ملف قيد المعالجة </option> 
 
-  </select>
-</div>
-
-<div dir="rtl" class="flex flex-row justify-around  " >    
+<div dir="rtl" class="flex flex-row justify-around" >    
       <div>
         <label >تاريخ التأسيس</label>
         <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl " type="date" name="tarikh-tassiss" value="{{$jamaya['tarikh-tassiss']}}"  >
@@ -142,6 +143,8 @@
     <button class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-3xl py-2 px-6 mt-6  bg-green-700  hover:bg-green-600 " type="submit">حفظ</button>
 </form>
 </div>
+
+
 </x-app-layout>
 
         

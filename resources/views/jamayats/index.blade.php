@@ -41,14 +41,7 @@
               <option value="نشطة">نشطة فقط</option>
               <option value="غيرنشطة"> غير نشطة فقط</option>
               <option value="ملف_قيدالمعالجة">   ملف قيد المعالجة</option>
-              <option value="blue">   Blue</option>
-              <option value="red">   Red</option>
-              <option value="yellow">   Yellow</option>
-              <option value="pink">   Pink</option>
-
-
-
-
+              
             </select>
             <br><br>
             <button class="border border-blue-600 bg-gray-100 rounded-lg m-2 p-2 " type="submit">تخصيص</button>
@@ -65,7 +58,6 @@
           <th class=" text-right py-4 px-2  w-96 "> تسمية الجمعية</th>
           {{-- <th class=" text-right py-4 px-2  w-40"> رقم الإعتماد</th> --}}
           <th class=" text-right py-4 px-2  w-60"> تاريخ آخر تجديد</th>
-
           <th class=" text-right py-4 px-2  w-60"> تاريخ التأسيس</th>
           <th class=" text-right py-4 px-2  w-44"> الطابع</th>
           <th class=" text-right py-4 px-2  w-44"> القطاع</th>
@@ -80,7 +72,7 @@
       <tbody class="relative " >
         
       @foreach($jamayats as $jamaya)
-        <tr class=" {{ \Carbon\Carbon::parse($jamaya['akherTarikhTajdid'])->addYears(3) < \Carbon\Carbon::now()->format('Y-m-d') ? 'bg-red-200 border border-red-400':''}}" class="shadow-sm hover:bg-gray-100 transition duration-150 "  >
+        <tr class=" {{ \Carbon\Carbon::parse($jamaya['akherTarikhTajdid'])->addYears(3) < \Carbon\Carbon::now()->format('Y-m-d') ? 'bg-red-100 border':''}}" class="shadow-sm hover:bg-gray-100 transition duration-150 "  >
           <td class=" text-right py-4 px-2  w-12"><a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['id']}}</a> </td>
           <td class="  text-right py-4 px-2  w-96 cursor-pointer text-green-700 font-bold text-lg ">
             <a href="{{route('jamayats.show',$jamaya['id'])}}">{{$jamaya['tasmia']}}</a>

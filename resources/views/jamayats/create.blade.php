@@ -3,15 +3,25 @@
     <h1  class="text-3xl backdrop-blur-3xl text-gray-700  font-bold text-center p-4 my-10" > جمعية جديدة </h1>     
   </div>
   <div class="container m-auto text-center  pt-15 pb-10">
-    
     <form action="{{route('jamayats.store')}}" method="POST">
           @csrf
       <input class="rounded-xl border-sky-200 my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="tasmia" placeholder=" تسمية الجمعية"> <br>
  
-<div>
+<div >
+  <select  name="nachta" id="nachta" class="rounded-lg m-2 text-lg font-bold" style="direction: rtl" >
+    <option value="">الوضعية</option> 
+    <option value="نشطة">نشطة</option> 
+    <option value="غيرنشطة"> غير نشطة </option> 
+    <option value="ملف_قيدالمعالجة">  ملف قيد المعالجة </option> 
 
-  <select  name="hala" id="hala" class="rounded-lg m-2 " style="direction: rtl" >
+  </select>
+</div>
+
+<div class = "flex justify-center ">
+
+  <select name="hala" id="hala" class="rounded-lg m-2 hidden" style="direction: rtl">
     <option value="" >  حالة الملف</option> 
+    <option value="في انتظار رد المصالح المختصة" >  في انتظار رد المصالح المختصة</option> 
     <option value="في انتظار رأي ديوان مندوبية الأمن" >  في انتظار رأي ديوان مندوبية الأمن</option> 
     <option value="في انتظار رأي قائد كتيبة الدرك الوطني" > في انتظار رأي قائد كتيبة الدرك الوطني</option> 
     <option value="في انتظار رد مديرية الشؤون الدينية" > في انتظار رد مديرية الشؤون الدينية</option> 
@@ -24,17 +34,7 @@
     <option value="لم يرفق بمحضر معاينة أو محضر الجمعية العامة محرر من طرف محضر قضائي" >لم يرفق بمحضر معاينة أو محضر الجمعية العامة محرر من طرف محضر قضائي</option> 
     <option value="نقص البيانات في الملف"  >نقص البيانات في الملف</option> 
   </select>
-
-
-  <select  name="nachta" id="nachta" class="rounded-lg m-2 " style="direction: rtl" >
-    <option value="">الوضعية</option> 
-    <option value="نشطة">نشطة</option> 
-    <option value="غيرنشطة"> غير نشطة </option> 
-    <option value="ملف_قيدالمعالجة">  ملف قيد المعالجة </option> 
-
-  </select>
 </div>
-
 
       <div dir="rtl" class="flex flex-row justify-around  " >    
             <div>
@@ -134,8 +134,7 @@
           @endforeach
         </select>
         </div>
-    
-     
+ 
       {{-- <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="nachta" placeholder=" الوضعية  "> <br> --}}
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="text" name="adresse" placeholder=" العنوان  "> <br>
       <input class="rounded-xl border-sky-200   my-3 px-3 py-2 text-right text-xl w-3/4" type="tel" name="phone" placeholder=" الهاتف  "> <br>
@@ -146,6 +145,8 @@
     <button class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-3xl py-2 px-6 mt-6  bg-green-700  hover:bg-green-600 " type="submit">حفظ</button>
     </form>
   </div>
+  
+  
 
 </x-app-layout>
 
